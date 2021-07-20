@@ -1,0 +1,22 @@
+POST http://localhost:3005/api/login
+Content-Type: application/json
+
+{
+    "displayName": "agearig",
+    "password": "password"
+}
+
+###
+
+POST http://localhost:3005/api/register
+Content-Type: application/json
+
+{
+    "displayName": "agearig4",
+    "password": "password"
+}
+
+###
+
+POST http://localhost:3005/api/test
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkaXNwbGF5TmFtZSI6ImFnZWFyaWcyIiwiaWF0IjoxNjI2NTYzOTgxLCJleHAiOjE2MjY4MjMxODF9.AP0lJ5Fjth_DP5MbaM3Jw77h5RvX1VGBM7j8SjonSV4
