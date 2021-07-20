@@ -21,4 +21,4 @@
   <li>Delete/Leave Chatroom</li>
 </ul>
 
-<h5>The front-end is located at: https://github.com/geariga/theschedulerMERN-frontend</h5>
+<h5>The front-end is located at: https://github.com/geariga/chatAppMERN-frontend</h5>
