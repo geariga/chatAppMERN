@@ -1,4 +1,4 @@
-<h1>The Scheduler - Back End</h1>
+<h1>ChatApp - Back End</h1>
 <p>
   This is the current progress I've made for the back-end of my "WhatsApp" chatting app clone.
 </p>
