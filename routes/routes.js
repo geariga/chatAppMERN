@@ -7,11 +7,11 @@ const User = require('../models/user')
 const Chatroom = require('../models/chatroom')
 const Token = require('../models/token')
 
-/*
-    Establish database connection
-*/
+
+// Establish database connection
 db.connect()
 
+// Routes
 exports.loginUser = async (req, res) => {
     const user = {displayName: req.body.displayName}
     const pwd = req.body.password
@@ -58,6 +58,23 @@ exports.registerUser = async (req, res) => {
     }
 }
 
-exports.test = (req, res) => {
-    console.log(req.user)
+exports.getUser = (req, res) => {
+    if (req.user) {
+        res.status(200).send(req.user)
+    }
+}
+
+exports.getMessages = async (req, res) => {
+    if (req.user) {
+        if (req.body.roomId) {
+            try {
+                const messages = await db.getMessages(roomId)
+                res.status(200).send(messages)
+            } catch (e) {
+                res.status(500).send({error: e.message})
+            }
+        } else {
+            res.status(400).send({message: 'roomId missing from request body'})
+        }
+    }
 }

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const User = require('../models/user')
+const Message = require('../models/message')
 const Token = require('../models/token')
 require('dotenv').config()
 
@@ -22,6 +23,7 @@ const Database = () => {
             }
         } catch (e) {
             console.log({error: e.message})
+            return e
         }
     }
 
@@ -30,10 +32,19 @@ const Database = () => {
             db = await connect()
         } 
         try {
-            const user = await User.find({displayName: displayName})
-            return user
+            return await User.find({displayName: displayName})
         } catch (e) {
             console.log({error: e.message})
+            return e
+        }
+    }
+
+    async function getMessages(roomId) {
+        try {
+            return await Message.find({roomId: roomId})
+        } catch (e) {
+            console.log({error: e.message})
+            return e
         }
     }
 
@@ -52,6 +63,7 @@ const Database = () => {
     return {
         connect: connect,
         getUser: getUser,
+        getMessages: getMessages,
         checkToken: checkIfAccessTokenIsRevoked
     }
 }

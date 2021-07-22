@@ -12,7 +12,7 @@ exports.authenticateToken = async function (req, res, next) {
         if (invalid) {
             return res.sendStatus(403)
         }
-        req.user = user
+        req.user = user.displayName
         next()
     })
 }
