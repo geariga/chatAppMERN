@@ -6,7 +6,7 @@ const { Schema } = mongoose
 const ChatroomModelSchema = new Schema({
     roomId: { type: String, required: true},
     name: { type: String, default: '', required: true },
-    members: [],
+    members: [String],
     avatar: Buffer,
     createdDate: { type: Date, default: Date.now()},
 })

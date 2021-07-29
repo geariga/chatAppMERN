@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const { Schema } = mongoose
 
 const TokenModelSchema = new Schema({
-    created: {type: Date, expires: 259200, default: Date.now()},
+    created: {type: Date, expires: 1800, default: Date.now()},
     token: {type: String, required: true}
 })
 

@@ -5,7 +5,8 @@ const { Schema } = mongoose
 
 const MessageSchema = new Schema({
     sender: { type: String, required: true },
-    message: { type: String, default: '', required: true },
+    recipients: { type: Array, default: [] },
+    message: { type: String, default: '' },
     roomId: { type: String, required: true },
     timeSent: { type: Date, default: Date.now() }
 })
