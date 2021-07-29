@@ -1,5 +1,4 @@
 'use strict'
-const db = require('../db/db')
 const jwt = require('jsonwebtoken')
 
 exports.authenticateToken = async function (req, res, next) {
@@ -8,15 +7,16 @@ exports.authenticateToken = async function (req, res, next) {
     if (token === null) {
         return res.sendStatus(401)
     }
-    jwt.verify(token, process.env.JWT_SECRET, (invalid, user) => {
-        if (invalid) {
+    jwt.verify(token, process.env.JWT_SECRET, (error, user) => {
+        if (error) {
             return res.sendStatus(403)
         }
-        req.user = user.displayName
+
+        req.user = user
         next()
     })
 }
 
-exports.createNewAccessToken = function (displayName) {
-    return jwt.sign(displayName, process.env.JWT_SECRET, { expiresIn: '259200s'/*'30s'*/})
+exports.createNewAccessToken = function (user) {
+    return jwt.sign(user, process.env.JWT_SECRET, { expiresIn: '1800s'})
 }
