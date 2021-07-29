@@ -39,9 +39,15 @@ const Database = () => {
         }
     }
 
-    async function getMessages(roomId) {
+    async function getMessages(userId, roomIds) {
         try {
-            return await Message.find({roomId: roomId})
+            return await Message.find(
+                {roomId: { '$in': roomIds }},
+                {'$or': [
+                    { sender: userId },
+                    { recipients: userId }
+                ]}
+            )
         } catch (e) {
             console.log({error: e.message})
             return e

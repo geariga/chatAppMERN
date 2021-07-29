@@ -12,7 +12,6 @@ exports.newMessage = async (message) => {
     if (messageProperties.length === 4 &&
         messageProperties.every(prop => requiredFields.includes(prop))    
     ) {
-
         try {
             const newMessage = new Message(message)
             await newMessage.save()
